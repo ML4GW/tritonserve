@@ -27,7 +27,7 @@ class SingularityInstance:
         return self._instance.name
 
     def run(self, command: str, background: bool = False) -> Optional[str]:
-        command = ["/bin/bash", "-c", command]
+        command = "/bin/bash -c '{command}'"
         logging.debug(
             "Executing command '{}' in singularity instance {}".format(
                 command, self.name

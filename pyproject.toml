@@ -5,6 +5,7 @@ description = "Local triton deployment python utility"
 authors = [
     "Alec Gunny <alec.gunny@ligo.org>",
 ]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.10"

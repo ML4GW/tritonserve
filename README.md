@@ -12,7 +12,7 @@ import tritonclient.grpc as triton
 
 model_repo_dir = "/path/to/model_repo"
 gpus = [0, 1]  # run the server on gpus with ids 0 and 1
-with tritonserve(model_repo_dir, gpus=gpus) as instance:
+with tritonserve.serve(model_repo_dir, gpus=gpus) as instance:
     do_some_prep_work_while_server_spins_up()
 
     # now wait for the server to come online
@@ -23,4 +23,13 @@ with tritonserve(model_repo_dir, gpus=gpus) as instance:
     do_some_inference(client)
 
 # on context exit, the server gets spun down
+```
+
+Alternatively, you can include a `wait` kwarg to `serve` to avoid
+entering the context until the model is ready:
+
+```python
+with tritonserver.serve(model_repo_dir, gpus=gpus, wait=True):
+    client = triton.InferenceServerClient(url="localhost:8001")
+    do_some_inference(client)
 ```

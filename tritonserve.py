@@ -1,10 +1,9 @@
 import logging
 import time
-from collections.abc import Iterable
 from contextlib import contextmanager
 from queue import Empty, Queue
 from threading import Thread, current_thread
-from typing import Optional
+from typing import Iterable, Optional
 
 from spython.main import Client as SingularityClient
 from tritonclient import grpc as triton
